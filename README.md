@@ -5,7 +5,7 @@ A basic sample which shows how to transfer object of model between fragments sim
 # Usage
 You can copy only KimchiDataCache file to your util folder.
 
-1. First put your data object to KimchiDataCache instance in your activity or fragment.
+First put your data object to KimchiDataCache instance in your activity or fragment.
 
 ```java
 User userItem = new User(1, "KimKevin");  // Sample Model
@@ -15,7 +15,7 @@ KimchiDataCache.getInstance().put(userItem);
 // add your activity or fragment
 ```
 
-2. Get your data object in your activity of fragment that you added.
+Get your data object in your activity of fragment that you added.
 
 ```java
 public class MainFragment extends Fragment{
