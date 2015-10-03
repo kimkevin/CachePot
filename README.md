@@ -1,6 +1,6 @@
 # KimchiDataCache
 
-A basic sample which shows how to transfer DataModel between fragments simply without Pacelable and Serializable.
+A basic sample which shows how to transfer object of model between fragments simply without Pacelable and Serializable.
 
 # Usage
 You can copy only KimchiDataCache file to your util folder.
@@ -12,7 +12,7 @@ User userItem = new User(1, "KimKevin");  // Sample Model
 
 KimchiDataCache.getInstance().put(userItem);
 
-// add next activity or fragment
+// add your activity or fragment
 ```
 
 2. Get your data object in your activity of fragment that you added.
