@@ -3,14 +3,14 @@ package com.kimkevim.datacache;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataCache {
-    private static DataCache instance;
+public class KimchiDataCache {
+    private static KimchiDataCache instance;
 
-    public static DataCache getInstance() {
+    public static KimchiDataCache getInstance() {
         if (instance == null) {
-            synchronized (DataCache.class) {
+            synchronized (KimchiDataCache.class) {
                 if (instance == null) {
-                    instance = new DataCache();
+                    instance = new KimchiDataCache();
                 }
             }
         }

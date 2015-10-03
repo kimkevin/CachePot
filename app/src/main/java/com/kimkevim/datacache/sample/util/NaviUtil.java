@@ -32,4 +32,18 @@ public class NaviUtil {
         fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.commitAllowingStateLoss();
     }
+
+    public static void replaceFragment(Context context, Fragment fragment) {
+        replaceFragment((AppCompatActivity) context, fragment);
+    }
+
+    public static void replaceFragment(AppCompatActivity activity, Fragment fragment) {
+        String tag = fragment.getClass().getSimpleName();
+
+        FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_fragment, fragment, tag);
+        fragmentTransaction.setBreadCrumbShortTitle(tag);
+        fragmentTransaction.addToBackStack(TAG);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
 }
