@@ -25,7 +25,7 @@ public class KimchiDataCache {
 
     public <T> T get(Class classType) {
         T value = (T)maps.get(classType);
-        maps.remove(value);
+        maps.remove(classType);
         return value;
     }
 }
