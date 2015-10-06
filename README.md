@@ -36,10 +36,15 @@ public class MainFragment extends Fragment{
 First push your data object with position to `KimchiDataCache` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
 
 ```java
-public Fragment getItem(int position) {
-    KimchiDataCache.getInstance().push(position, foodItems.get(position));
+private class PagerAdapter extends FragmentStatePagerAdapter {
 
-    return FoodFragment.newInstance(position);
+    ...
+    
+    public Fragment getItem(int position) {
+        KimchiDataCache.getInstance().push(position, foodItems.get(position));
+
+        return FoodFragment.newInstance(position);
+    }
 }
 ```
 
