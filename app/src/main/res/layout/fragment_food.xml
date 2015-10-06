@@ -7,18 +7,16 @@
               android:background="#ffffff"
         >
     <TextView
-            android:id="@+id/name_txt"
+            android:id="@+id/main_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textStyle="bold"
             />
-
-    <TextView
-            android:id="@+id/desc_txt"
+    <Button
+            android:id="@+id/main_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:text="Open Detail"
+            android:textStyle="bold"
             />
 </LinearLayout>

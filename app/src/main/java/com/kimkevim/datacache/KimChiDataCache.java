@@ -18,14 +18,25 @@ public class KimchiDataCache {
     }
 
     private Map<Class<?>, Object> maps = new HashMap<>();
+    private Map<Integer, Object> listMap = new HashMap<>();
 
-    public <T> void put(T data) {
+    public <T> void push(T data) {
         maps.put(data.getClass(), data);
     }
 
-    public <T> T get(Class classType) {
+    public <T> T pop(Class classType) {
         T value = (T)maps.get(classType);
         maps.remove(classType);
+        return value;
+    }
+
+    public <T> void push(int position, T data) {
+        listMap.put(position, data);
+    }
+
+    public <T> T pop(int position) {
+        T value = (T)listMap.get(position);
+        listMap.remove(position);
         return value;
     }
 }

@@ -8,27 +8,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.kimkevim.datacache.KimchiDataCache;
 import com.kimkevim.datacache.R;
-import com.kimkevim.datacache.sample.model.User;
+import com.kimkevim.datacache.sample.model.KoreanFood;
 
-public class UserDetailFragmnet extends Fragment{
-    private static final String TAG = UserDetailFragmnet.class.getSimpleName();
+public class FoodDetailFragment extends Fragment{
+    private static final String TAG = FoodDetailFragment.class.getSimpleName();
 
-    private User userItem;
+    private KoreanFood koreanFoodItem;
 
-    private TextView txt;
+    private TextView nameTxt;
+    private TextView descTxt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        userItem = KimchiDataCache.getInstance().get(User.class);
+        koreanFoodItem = KimchiDataCache.getInstance().pop(KoreanFood.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        txt = (TextView) rootView.findViewById(R.id.detail_txt);
+        nameTxt = (TextView) rootView.findViewById(R.id.name_txt);
+        descTxt = (TextView) rootView.findViewById(R.id.desc_txt);
 
         return rootView;
     }
@@ -37,6 +39,7 @@ public class UserDetailFragmnet extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txt.setText("Hello, " + userItem.getName() + " again.");
+        nameTxt.setText(koreanFoodItem.getName());
+        descTxt.setText(koreanFoodItem.getDescription());
     }
 }
