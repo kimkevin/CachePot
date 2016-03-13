@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.kimkevim.datacache.KimchiDataCache;
+import com.kimkevim.datacache.DataCache;
 import com.kimkevim.datacache.R;
 import com.kimkevim.datacache.sample.model.KoreanFood;
 
@@ -58,7 +58,7 @@ public class JarFragment extends Fragment{
             /**
              * Put your Obejct with Position to DataCache
              */
-            KimchiDataCache.getInstance().push(position, foodItems.get(position));
+            DataCache.getInstance().push(position, foodItems.get(position));
 
             return FoodFragment.newInstance(position);
         }

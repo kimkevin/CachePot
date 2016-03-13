@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.kimkevim.datacache.KimchiDataCache;
+import com.kimkevim.datacache.DataCache;
 import com.kimkevim.datacache.R;
 import com.kimkevim.datacache.sample.model.KoreanFood;
 import com.kimkevim.datacache.sample.util.NaviUtil;
@@ -36,7 +36,7 @@ public class FoodFragment extends Fragment {
 
         if (getArguments() != null) {
             final int position = getArguments().getInt(ARG_POSITION);
-            koreanFoodItem = KimchiDataCache.getInstance().pop(position);
+            koreanFoodItem = DataCache.getInstance().pop(position);
         }
     }
 
@@ -60,7 +60,7 @@ public class FoodFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                KimchiDataCache.getInstance().push(koreanFoodItem);
+                DataCache.getInstance().push(koreanFoodItem);
 
                 NaviUtil.addFragment(getActivity(), new FoodDetailFragment());
             }

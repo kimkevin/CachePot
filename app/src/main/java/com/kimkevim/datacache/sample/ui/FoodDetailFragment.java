@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.kimkevim.datacache.KimchiDataCache;
+import com.kimkevim.datacache.DataCache;
 import com.kimkevim.datacache.R;
 import com.kimkevim.datacache.sample.model.KoreanFood;
 
@@ -22,7 +22,7 @@ public class FoodDetailFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        koreanFoodItem = KimchiDataCache.getInstance().pop(KoreanFood.class);
+        koreanFoodItem = DataCache.getInstance().pop(KoreanFood.class);
     }
 
     @Override
