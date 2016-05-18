@@ -17,10 +17,14 @@ public class DataCache {
         return instance;
     }
 
-    private Map<Class<?>, Object> dataMap = new HashMap<>();
-    private Map<Integer, Object> dataListMap = new HashMap<>();
+    private Map<Class<?>, Object> dataMap;
+    private Map<Integer, Object> dataListMap;
 
     public <T> void push(T data) {
+        if (dataMap == null) {
+            dataMap = new HashMap<>();
+        }
+
         dataMap.put(data.getClass(), data);
     }
 
@@ -31,6 +35,10 @@ public class DataCache {
     }
 
     public <T> void push(int position, T data) {
+        if (dataListMap == null) {
+            dataListMap = new HashMap<>();
+        }
+
         dataListMap.put(position, data);
     }
 
