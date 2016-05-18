@@ -1,18 +1,18 @@
-# KimchiDataCache
+# Android Simple DataCache
 
 A basic sample which shows how to transfer object of model between fragments simply without Pacelable and Serializable.
 
 # Usage
-You can copy only KimchiDataCache file to your util folder.
+You can copy only DataCache file to your util folder.
 
 **1. Transfer Object(Model) Synchronously between activities and fragments**
 
-First push your data object to `KimchiDataCache` instance in your `Activity` or `Fragment`.
+First push your data object to `DataCache` instance in your `Activity` or `Fragment`.
 
 ```java
 KoreanFood foodItem = new KoreanFood(1, "Kimchi", "Traditional fermented Korean side dish made of vegetables")  // Sample Model
 
-KimchiDataCache.getInstance().push(foodItem);
+DataCache.getInstance().push(foodItem);
 
 // add your activity or fragment
 ```
@@ -27,13 +27,13 @@ public class MainFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        foodItem = KimchiDataCache.getInstance().pop(KoreanFood.class);
+        foodItem = DataCache.getInstance().pop(KoreanFood.class);
     }
 ```
 
 **2. Transfer Object(Model) Asynchronously when using ViewPager**
 
-First push your data object with position to `KimchiDataCache` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
+First push your data object with position to `DataCache` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
 
 ```java
 private class PagerAdapter extends FragmentStatePagerAdapter {
@@ -41,7 +41,7 @@ private class PagerAdapter extends FragmentStatePagerAdapter {
     ...
     
     public Fragment getItem(int position) {
-        KimchiDataCache.getInstance().push(position, foodItems.get(position));
+        DataCache.getInstance().push(position, foodItems.get(position));
 
         return FoodFragment.newInstance(position);
     }
@@ -65,7 +65,7 @@ public void onCreate(Bundle savedInstanceState) {
 
     if (getArguments() != null) {
         final int position = getArguments().getInt(ARG_POSITION);
-        koreanFoodItem = KimchiDataCache.getInstance().pop(position);
+        koreanFoodItem = DataCache.getInstance().pop(position);
     }
 }
 ```
