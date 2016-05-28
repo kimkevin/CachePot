@@ -6,9 +6,9 @@ A basic sample which shows how to transfer object of model between fragments sim
 You can copy only DataCache file to your util folder.
 
 It works anywhere as below
-* Activizty <--> Activity
-* Activity <--> Fragment
-* Fragment <--> Fragment
+* Between Activizty and Activity
+* Between Activity and Fragment
+* Between Fragment and Fragment
 
 #### 1. Transfer Object(Model) Synchronously
 
@@ -35,7 +35,7 @@ public class MainFragment extends Fragment{
     }
 ```
 
-#### 2. Transfer Collection Synchronously
+#### 2. Transfer Collection or Map Synchronously
 
 First push your collection to `DataCache` instance in your `Activity` or `Fragment`.
 
