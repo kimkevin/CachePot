@@ -14,7 +14,6 @@ dependencies {
 ```
 
 # Usage
-You can copy only CachePot file to your util folder.
 
 It works anywhere as below
 * Between Activizty and Activity
