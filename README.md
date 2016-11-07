@@ -5,11 +5,11 @@ A basic sample which shows how to transfer object of model between fragments sim
 # Download
 ```java
 repositories {
-	  jcenter()
+  jcenter()
 }
 
 dependencies {
-	  compile 'com.github.kimkevin:cachepot:1.0.0'
+  compile 'com.github.kimkevin:cachepot:1.0.0'
 }
 ```
 
