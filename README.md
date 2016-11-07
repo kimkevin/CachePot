@@ -1,9 +1,20 @@
-# Android Simple DataCache
+# CachePot - Android Simple CachePot
 
 A basic sample which shows how to transfer object of model between fragments simply without Pacelable and Serializable.
 
+# Download
+```java
+repositories {
+	  jcenter()
+}
+
+dependencies {
+	  compile 'com.github.kimkevin:cachepot:1.0.0'
+}
+```
+
 # Usage
-You can copy only DataCache file to your util folder.
+You can copy only CachePot file to your util folder.
 
 It works anywhere as below
 * Between Activizty and Activity
@@ -12,12 +23,12 @@ It works anywhere as below
 
 #### 1. Transfer Object(Model) Synchronously
 
-First push your data object to `DataCache` instance in your `Activity` or `Fragment`.
+First push your data object to `CachePot` instance in your `Activity` or `Fragment`.
 
 ```java
 KoreanFood foodItem = new KoreanFood(1, "Kimchi", "Traditional fermented Korean side dish made of vegetables")  // Sample Model
 
-DataCache.getInstance().push(foodItem);
+CachePot.getInstance().push(foodItem);
 // open your activity or fragment
 ```
 
@@ -31,38 +42,38 @@ public class MainFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        foodItem = DataCache.getInstance().pop(KoreanFood.class);
+        foodItem = CachePot.getInstance().pop(KoreanFood.class);
     }
 ```
 
 #### 2. Transfer Collection or Map Synchronously
 
-First push your collection to `DataCache` instance in your `Activity` or `Fragment`.
+First push your collection to `CachePot` instance in your `Activity` or `Fragment`.
 
 ```java
 List<KoreanFood> foodItems = new ArrayList<>();
 foodItems.add(new KoreanFood(1, "Kimchi", "Traditional fermented Korean side dish made of vegetables"));
 foodItems.add(new KoreanFood(2, "Kkakdugi", "A variety of kimchi in Korean cuisine"));
 
-DataCache.getInstance().push(foodItems);
+CachePot.getInstance().push(foodItems);
 // open your activity or fragment
 ```
 
 Get your collection in your `Activity` or `Fragment`
 
 ```java
-List<KoreanFood> foodItems = DataCache.getInstance().pop(ArrayList.class);
+List<KoreanFood> foodItems = CachePot.getInstance().pop(ArrayList.class);
 ```
 
 #### 3. Transfer Object(Model) Asynchronously when using ViewPager
 
-First push your data object with position to `DataCache` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
+First push your data object with position to `CachePot` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
 
 ```java
 private class PagerAdapter extends FragmentStatePagerAdapter {
     ...
     public Fragment getItem(int position) {
-        DataCache.getInstance().push(position, foodItems.get(position));
+        CachePot.getInstance().push(position, foodItems.get(position));
 
         return FoodFragment.newInstance(position);
     }
@@ -86,7 +97,7 @@ public void onCreate(Bundle savedInstanceState) {
 
     if (getArguments() != null) {
         final int position = getArguments().getInt(ARG_POSITION);
-        koreanFoodItem = DataCache.getInstance().pop(position);
+        koreanFoodItem = CachePot.getInstance().pop(position);
     }
 }
 ```
@@ -95,8 +106,8 @@ public void onCreate(Bundle savedInstanceState) {
 * Kevin Yongjun Kim - imkimkevin@gmail.com
 
 # Contributing
-All contributions are welcome. Open a [Pull Requests](https://github.com/kimkevin/AndroidDataCache/pulls) or refer to
-the [Issues](https://github.com/kimkevin/AndroidDataCache/issues) section.
+All contributions are welcome. Open a [Pull Requests](https://github.com/kimkevin/CachePot/pulls) or refer to
+the [Issues](https://github.com/kimkevin/CachePot/issues) section.
 
 # License
 MIT
