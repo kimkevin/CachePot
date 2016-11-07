@@ -47,5 +47,10 @@ public class CachePot {
     dataListMap.remove(position);
     return value;
   }
+
+  public void clear() {
+    dataMap.clear();
+    dataListMap.clear();
+  }
 }
 
