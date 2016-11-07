@@ -1,4 +1,4 @@
-# CachePot - Android Simple CachePot
+# CachePot - Android Simple Data Cache
 
 A basic sample which shows how to transfer object of model between fragments simply without Pacelable and Serializable.
 
