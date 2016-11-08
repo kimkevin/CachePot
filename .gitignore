@@ -1,7 +1,12 @@
 .gradle
 .idea
-.build
+build/
 .local.properties
 .DS_Store
 .captures
 *.iml
+library/build
+samples/build
+**/private-*.properties
+*.jks
+*.apk
