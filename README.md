@@ -1,9 +1,14 @@
 # CachePot - Android Simple Data Cache
 
-A basic sample which shows how to transfer object of model between fragments simply without Pacelable and Serializable.
+CachePot is a simple open source for data cache management and passing data object between Fragments without Pacelable and Serializable.
+
+> WARNING: It would be inappropriate to pass data both ways between different android applications, it's a better way to use `Intent` properly.
 
 # Download
-```java
+
+Gradle:
+
+```bash
 repositories {
   jcenter()
 }
@@ -13,19 +18,31 @@ dependencies {
 }
 ```
 
+Maven:
+
+```bash
+<dependency>
+  <groupId>com.github.kimkevin</groupId>
+  <artifactId>cachepot</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 # Usage
 
-It works anywhere as below
-* Between Activizty and Activity
-* Between Activity and Fragment
-* Between Fragment and Fragment
+It works anywhere. there're examples as below
+* Between `Activizty` and `Activity`
+* Between `Activity` and `Fragment`
+* Between `Fragment` and `Fragment`
+* From `PagerAdapter` to individual `Fragment`
 
-#### 1. Transfer Object(Model) Synchronously
+#### 1. Pass Object(Model) Synchronously
 
 First push your data object to `CachePot` instance in your `Activity` or `Fragment`.
 
 ```java
-KoreanFood foodItem = new KoreanFood(1, "Kimchi", "Traditional fermented Korean side dish made of vegetables")  // Sample Model
+// Sample data model
+KoreanFood foodItem = new KoreanFood(1, "Kimchi", "Traditional fermented Korean side dish made of vegetables")  
 
 CachePot.getInstance().push(foodItem);
 // open your activity or fragment
@@ -45,7 +62,7 @@ public class MainFragment extends Fragment{
     }
 ```
 
-#### 2. Transfer Collection or Map Synchronously
+#### 2. Pass Collection or Map Synchronously
 
 First push your collection to `CachePot` instance in your `Activity` or `Fragment`.
 
@@ -64,7 +81,7 @@ Get your collection in your `Activity` or `Fragment`
 List<KoreanFood> foodItems = CachePot.getInstance().pop(ArrayList.class);
 ```
 
-#### 3. Transfer Object(Model) Asynchronously when using ViewPager
+#### 3. Pass Object(Model) Asynchronously when using ViewPager
 
 First push your data object with position to `CachePot` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
 
