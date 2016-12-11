@@ -1,20 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
-
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'com.novoda:bintray-release:0.4.0'
-  }
-}
+apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
   buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
+    applicationId "com.github.kimkevin.cachepot.sample"
+
     minSdkVersion MIN_SDK_VERSION as int
     targetSdkVersion TARGET_SDK_VERSION as int
 
@@ -24,15 +16,28 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 
-  buildTypes {
+  signingConfigs {
     release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      def privatePropertiesFile = file("private-release.properties")
+      if (privatePropertiesFile.exists()) {
+        Properties propsPrivate = new Properties()
+        propsPrivate.load(new FileInputStream(privatePropertiesFile))
+
+        storeFile file(propsPrivate['key.store'])
+        keyAlias propsPrivate['key.alias']
+        storePassword propsPrivate['key.store.password']
+        keyPassword propsPrivate['key.alias.password']
+      }
     }
   }
 
-  lintOptions {
-    abortOnError false
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
+
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
   }
 }
 
@@ -44,13 +49,8 @@ dependencies {
 
   compile "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
   testCompile "junit:junit:${JUNIT_VERSION}"
-}
 
-publish {
-  userOrg = USER_ORG
-  groupId = GROUP
-  artifactId = ARTIFACT_ID
-  publishVersion = VERSION_NAME
-  desc = POM_DESCRIPTION
-  website = POM_URL
+  debugCompile project(path: ':library')
+
+  releaseCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
 }

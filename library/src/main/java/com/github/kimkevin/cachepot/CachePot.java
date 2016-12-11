@@ -53,4 +53,3 @@ public class CachePot {
     dataListMap.clear();
   }
 }
-
