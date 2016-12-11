@@ -3,147 +3,147 @@
 
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_16fe306a031faef47e5f43b009f2cafdf4e292de.jar" />
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.0.1_abffa03e0fedb68adfd83a508a17dcb21bf44e61.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.0/jars/classes.jar"
+        jar="/Users/kevin/Documents/dev/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.0_3ff1bc1cd81d8ffad9eb6d8ed2b2ce39802f3075.jar" />
+        revision="25.0.0"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/support-annotations-25.0.1_866fabdf8ea57f806a67cb7eb01015baf9d96267.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.0/jars/classes.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.0_2e5fbb8b4e1fab1acd74f5dcaef64f68f50ad8de.jar" />
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_48993204d28160708cb2300d74648bc786d3cd97.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_cfa77540b6f4d334f35f9f6d46653f9494b3f74e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.0_a6ce964c7f0e14db9168c1d0f08b938cb5ae6120.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/kevin/Documents/dev/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.0/support-annotations-24.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/support-annotations-24.2.0_6cb4815ebb5fe7d0e1b60d296687869848aa0cc3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/libs/internal_impl-24.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_1393f22ce8c4703d4a8062e62d5607d1d135be8b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.0_ba1dc33097f289a5f752209c5e2f2a209e6fc198.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.0_5460eb98d22528ec45f293d3985e4c36cb2bdbbb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.0_993a54537243fe95f4c599564612b3299dbc3066.jar" />
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_3f32649e0808b6a9921af49b63dfc77c6b0dd2a5.jar" />
     </item>
     <item
         is-multidex="false"
         jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/CachePot/library/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="6176eaee38f887585fedf3a01fddab28a4b3dac9">
+        revision="25.0.0"
+        sha1="79d0ebfa256735ff3e25ee4b9d9d5eb72b4b054e">
         <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/CachePot-library-unspecified_b9ecef1b4dd6fe41f53d3940f2f7bdd95fe1516a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_9f05b10110a0c29f13f6371289fd4064f4e62d13.jar" />
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.0.1_402bc48a179546ea397c8af0e55ca664375a1b8a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_847a049e853071ffd3d8ead2cb009bd9c379edbc.jar" />
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.0.1_ab979f045aefe733a5cbe8648a3c24870aac33d7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/classes.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.0_c83c8042cb7312a78e5b155af1f375a436ba1511.jar" />
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.0.1_253009947fdeee1616ed8dd89669f56d46fbdff7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/classes.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.0_5064013eb59af40340a68e0740d92df52ba33d15.jar" />
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_03cb68d4592ec9ac7f4bc7bb6611ff2830e1fd66.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/classes.jar"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="24.0.1"
-        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
-        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.0_54efefb57727cb5531e89254e3781fe044a94c77.jar" />
+        revision="25.0.0"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.0.1_9ef48a3525448a6cfadc3a921e417d7c220d2f28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.0.1_10b2aff6d1640f3321771f92800faa0be108712c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.0.1_af7a5c3eefd7047c47eacbc17c43e6a9907732d1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.0.1_6dfed1597b257703896be90bd595d48f26d3b31f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_29c88f3cce8896adc241b3a52986365df8a686e3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.0.1_6a5a3418f06fc220f6c5614a6355946693cf6f0d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="/Users/kevin/Documents/git/CachePot/samples/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_f6fc991825dde94c2c351d55f578025b58394f00.jar" />
     </item>
 
 </items>
