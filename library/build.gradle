@@ -53,4 +53,5 @@ publish {
   publishVersion = VERSION_NAME
   desc = POM_DESCRIPTION
   website = POM_URL
+  uploadName=UPLOAD_NAME
 }
