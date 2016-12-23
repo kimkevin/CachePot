@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.github.kimkevin:cachepot:1.0.0'
+  compile 'com.github.kimkevin:cachepot:1.0.1'
 }
 ```
 
