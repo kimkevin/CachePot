@@ -1,5 +1,7 @@
 # CachePot - Android Simple Data Cache
 
+[ ![Download](https://api.bintray.com/packages/kimkevin/maven/com.github.kimkevin%3Acachepot/images/download.svg) ](https://bintray.com/kimkevin/maven/com.github.kimkevin%3Acachepot/_latestVersion)
+
 CachePot is a simple open source for data cache management and passing data object between Fragments without Pacelable and Serializable.
 
 > WARNING: It would be inappropriate to pass data both ways between different android applications, it's a better way to use `Intent` properly.
@@ -14,7 +16,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.github.kimkevin:cachepot:1.0.0'
+  compile 'com.github.kimkevin:cachepot:1.0.1'
 }
 ```
 
