@@ -52,5 +52,5 @@ dependencies {
 
   compile project(path: ':library')
   debugCompile project(path: ':library')
-  releaseCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
+//  releaseCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
 }

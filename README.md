@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.github.kimkevin:cachepot:1.0.1'
+  compile 'com.github.kimkevin:cachepot:1.1.0'
 }
 ```
 
@@ -26,7 +26,7 @@ Maven:
 <dependency>
   <groupId>com.github.kimkevin</groupId>
   <artifactId>cachepot</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
