@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kimkevin/CachePot.svg?branch=master)](https://travis-ci.org/kimkevin/CachePot)
 [![Download](https://api.bintray.com/packages/kimkevin/maven/com.github.kimkevin%3Acachepot/images/download.svg) ](https://bintray.com/kimkevin/maven/com.github.kimkevin%3Acachepot/_latestVersion)
+[![API](https://img.shields.io/badge/API-14%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 CachePot is a simple open source for data cache management and passing data object between Fragments without Pacelable and Serializable.
 
