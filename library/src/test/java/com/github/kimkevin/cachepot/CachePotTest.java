@@ -180,7 +180,7 @@ public class CachePotTest {
     CachePot.getInstance().push(TAG, 4, user3);
 
     assertThat(CachePot.getInstance().size(TAG), is(greaterThan(0)));
-    assertThat(CachePot.getInstance().size(TAG), is(equalTo(2)));
+    assertThat(CachePot.getInstance().size(TAG), is(equalTo(3)));
 
     CachePot.getInstance().clear(TAG);
 
