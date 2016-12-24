@@ -14,58 +14,58 @@ import com.github.kimkevin.cachepot.sample.model.KoreanFood;
 import com.github.kimkevin.cachepot.sample.util.NaviUtil;
 
 public class FoodFragment extends Fragment {
-    private static final String TAG = FoodFragment.class.getSimpleName();
+  private static final String TAG = FoodFragment.class.getSimpleName();
 
-    private static String ARG_POSITION = "position";
+  private static String ARG_POSITION = "position";
 
-    private TextView txt;
-    private Button btn;
+  private TextView txt;
+  private Button btn;
 
-    private KoreanFood koreanFoodItem;
+  private KoreanFood koreanFoodItem;
 
-    public static FoodFragment newInstance(int position) {
-        FoodFragment fragment = new FoodFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_POSITION, position);
-        fragment.setArguments(args);
-        return fragment;
+  public static FoodFragment newInstance(int position) {
+    FoodFragment fragment = new FoodFragment();
+    Bundle args = new Bundle();
+    args.putInt(ARG_POSITION, position);
+    fragment.setArguments(args);
+    return fragment;
+  }
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    if (getArguments() != null) {
+      final int position = getArguments().getInt(ARG_POSITION);
+
+      koreanFoodItem = CachePot.getInstance().pop(position);
     }
+  }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View rootView = inflater.inflate(R.layout.fragment_food, container, false);
 
-        if (getArguments() != null) {
-            final int position = getArguments().getInt(ARG_POSITION);
+    txt = (TextView) rootView.findViewById(R.id.main_txt);
+    btn = (Button) rootView.findViewById(R.id.main_btn);
 
-            koreanFoodItem = CachePot.getInstance().pop(position);
-        }
-    }
+    return rootView;
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_food, container, false);
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
 
-        txt = (TextView) rootView.findViewById(R.id.main_txt);
-        btn = (Button) rootView.findViewById(R.id.main_btn);
+    if (koreanFoodItem == null) return;
 
-        return rootView;
-    }
+    txt.setText("It's " + koreanFoodItem.getName());
+    btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        CachePot.getInstance().push(koreanFoodItem);
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        if (koreanFoodItem == null) return;
-
-        txt.setText("It's " + koreanFoodItem.getName());
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CachePot.getInstance().push(koreanFoodItem);
-
-                NaviUtil.addFragment(getActivity(), new FoodDetailFragment());
-            }
-        });
-    }
+        NaviUtil.addFragment(getActivity(), new FoodDetailFragment());
+      }
+    });
+  }
 }

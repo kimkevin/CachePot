@@ -51,6 +51,6 @@ dependencies {
   testCompile "junit:junit:${JUNIT_VERSION}"
 
   compile project(path: ':library')
-//  debugCompile project(path: ':library')
-//  releaseCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
+  debugCompile project(path: ':library')
+  releaseCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
 }

@@ -17,39 +17,101 @@ public class CachePot {
     return instance;
   }
 
-  private Map<Class<?>, Object> dataMap;
-  private Map<Integer, Object> dataListMap;
+  private Map<Object, Object> cacheMap;
 
-  public <T> void push(T data) {
-    if (dataMap == null) {
-      dataMap = new HashMap<>();
+  public void push(Object data) {
+    if (cacheMap == null) {
+      cacheMap = new HashMap<>();
     }
 
-    dataMap.put(data.getClass(), data);
+    cacheMap.put(data.getClass(), data);
   }
 
   public <T> T pop(Class classType) {
-    T value = (T) dataMap.get(classType);
-    dataMap.remove(classType);
-    return value;
-  }
-
-  public <T> void push(int position, T data) {
-    if (dataListMap == null) {
-      dataListMap = new HashMap<>();
+    T value;
+    try {
+      value = (T) cacheMap.get(classType);
+      cacheMap.remove(classType);
+    } catch (NullPointerException exception) {
+      return null;
     }
 
-    dataListMap.put(position, data);
+    return value;
   }
 
-  public <T> T pop(int position) {
-    T value = (T) dataListMap.get(position);
-    dataListMap.remove(position);
+  public void push(long id, Object data) {
+    if (cacheMap == null) {
+      cacheMap = new HashMap<>();
+    }
+
+    cacheMap.put(id, data);
+  }
+
+  public <T> T pop(long id) {
+    T value;
+    try {
+      value = (T) cacheMap.get(id);
+      cacheMap.remove(id);
+    } catch (NullPointerException exception) {
+      return null;
+    }
+
     return value;
+  }
+
+  public void push(String TAG, int id, Object data) {
+    if (cacheMap == null) {
+      cacheMap = new HashMap<>();
+    }
+
+    Map<Integer, Object> valueMap;
+    if (cacheMap.containsKey(TAG) && cacheMap.get(TAG) instanceof HashMap) {
+      valueMap = (HashMap<Integer, Object>) cacheMap.get(TAG);
+    } else {
+      valueMap = new HashMap<>();
+    }
+
+    valueMap.put(id, data);
+    cacheMap.put(TAG, valueMap);
+  }
+
+  public <T> T pop(String TAG, int id) {
+     T value;
+
+    try {
+      value = (T) ((HashMap<Integer, Object>) cacheMap.get(TAG)).get(id);
+      cacheMap.remove(id);
+    } catch (NullPointerException exception) {
+      return null;
+    }
+    return value;
+  }
+
+  public int size() {
+    try {
+      return cacheMap.size();
+    } catch (NullPointerException exception) {
+      return 0;
+    }
+  }
+
+  public int size(String TAG) {
+    try {
+      return ((HashMap) cacheMap.get(TAG)).size();
+    } catch (ClassCastException | NullPointerException exception) {
+      return 0;
+    }
   }
 
   public void clear() {
-    dataMap.clear();
-    dataListMap.clear();
+    if (cacheMap != null) {
+      cacheMap.clear();
+    }
+  }
+
+  public void clear(String TAG) {
+    if (cacheMap != null && cacheMap.get(TAG) != null) {
+      ((HashMap) cacheMap.get(TAG)).clear();
+    }
   }
 }
