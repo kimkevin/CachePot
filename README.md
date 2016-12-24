@@ -96,9 +96,9 @@ private class PagerAdapter extends FragmentStatePagerAdapter {
     ...
     public Fragment getItem(int position) {
         KoreanFood foodItem = foodItems.get(position);
-        CachePot.getInstance().push(TAG, position, foodItem);
+        CachePot.getInstance().push(position, foodItem);
         // or
-        CachePot.getInstance().push(TAG, foodItem.getId(), foodItem);
+        CachePot.getInstance().push(foodItem.getId(), foodItem);
         ...
     }
 }
