@@ -4,7 +4,7 @@
 [![Download](https://api.bintray.com/packages/kimkevin/maven/com.github.kimkevin%3Acachepot/images/download.svg) ](https://bintray.com/kimkevin/maven/com.github.kimkevin%3Acachepot/_latestVersion)
 [![API](https://img.shields.io/badge/API-14%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
-CachePot is a simple open source for data cache management and passing data object between Fragments without Pacelable and Serializable.
+CachePot is a simple open source for data cache management and passing data object between Fragments(Activities) without Pacelable and Serializable.
 
 > WARNING: It would be inappropriate to pass data both ways between different android applications, it's a better way to use `Intent` properly.
 
@@ -40,35 +40,33 @@ It works anywhere. there're examples as below
 * Between `Fragment` and `Fragment`
 * From `PagerAdapter` to individual `Fragment`
 
-#### 1. Pass Object(Model) Synchronously
+## 1. Signle Type, Single Data
 
-First push your data object to `CachePot` instance in your `Activity` or `Fragment`.
+Push your data object to `CachePot` instance in your `Activity` or `Fragment`.
+> public void push(Object data)
 
 ```java
-// Sample data model
 KoreanFood foodItem = new KoreanFood(1, "Kimchi", "Traditional fermented Korean side dish made of vegetables")  
-
 CachePot.getInstance().push(foodItem);
 // open your activity or fragment
 ```
 
-Get your data object in your `Activity` or `Fragment`
+Pop your data object from `CachePot` after view changes
+> public Object pop(Class classType)
 
 ```java
 public class MainFragment extends Fragment{
-    private KoreanFood foodItem;
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        foodItem = CachePot.getInstance().pop(KoreanFood.class);
+        KoreanFood foodItem = CachePot.getInstance().pop(KoreanFood.class);
     }
 ```
 
-#### 2. Pass Collection or Map Synchronously
+#### In case of Collection or Map
 
-First push your collection to `CachePot` instance in your `Activity` or `Fragment`.
+> Push
 
 ```java
 List<KoreanFood> foodItems = new ArrayList<>();
@@ -79,45 +77,78 @@ CachePot.getInstance().push(foodItems);
 // open your activity or fragment
 ```
 
-Get your collection in your `Activity` or `Fragment`
+> Pop
 
 ```java
 List<KoreanFood> foodItems = CachePot.getInstance().pop(ArrayList.class);
 ```
 
-#### 3. Pass Object(Model) Asynchronously when using ViewPager
+## 2. Signle Type, Multiple Data
 
-First push your data object with position to `CachePot` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
+How to pass Object(Model) Asynchronously when using ViewPager
+
+First push your data object with `position` or `id` to `CachePot` instance in `FragmentStatePagerAdapter`(or `FragmentPagerAdapter`)
+
+> public void push(long id, Object data)
 
 ```java
 private class PagerAdapter extends FragmentStatePagerAdapter {
     ...
     public Fragment getItem(int position) {
-        CachePot.getInstance().push(position, foodItems.get(position));
-
-        return FoodFragment.newInstance(position);
+        KoreanFood foodItem = foodItems.get(position);
+        CachePot.getInstance().push(TAG, position, foodItem);
+        // or
+        CachePot.getInstance().push(TAG, foodItem.getId(), foodItem);
+        ...
     }
 }
 ```
 
-Get your data object in your `Fragment` of `ViewPager`
+> public Object pop(long id)
 
 ```java
-public static FoodFragment newInstance(int position) {
-    FoodFragment fragment = new FoodFragment();
-    Bundle args = new Bundle();
-    args.putInt(ARG_POSITION, position);
-    fragment.setArguments(args);
-    return fragment;
-}
-
 @Override
 public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    ...
     if (getArguments() != null) {
         final int position = getArguments().getInt(ARG_POSITION);
-        koreanFoodItem = CachePot.getInstance().pop(position);
+        foodItem = CachePot.getInstance().pop(position);
+        // or
+        foodItem = CachePot.getInstance().pop(id);
+    }
+}
+```
+
+**If more complecated views, use TAG**
+
+> public void push(String tag, long id, Object data)
+
+```java
+private class PagerAdapter extends FragmentStatePagerAdapter {
+    ...
+    public Fragment getItem(int position) {
+        KoreanFood foodItem = foodItems.get(position);
+        CachePot.getInstance().push(TAG, position, foodItem);
+        // or
+        CachePot.getInstance().push(TAG, foodItem.getId(), foodItem);
+        ...
+    }
+}
+```
+
+> public Object pop(String tag, long id)
+
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ...
+    if (getArguments() != null) {
+        final int position = getArguments().getInt(ARG_POSITION);
+        foodItem = CachePot.getInstance().pop(TAG, position);
+        // or
+        foodItem = CachePot.getInstance().pop(TAG, id);
     }
 }
 ```
