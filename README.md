@@ -35,12 +35,12 @@ Maven:
 # Usage
 
 It works anywhere. there're examples as below
-* Between `Activizty` and `Activity`
+* Between `Activity` and `Activity`
 * Between `Activity` and `Fragment`
 * Between `Fragment` and `Fragment`
 * From `PagerAdapter` to individual `Fragment`
 
-## 1. Signle Type, Single Data
+## 1. Single Type, Single Data
 
 Push your data object to `CachePot` instance in your `Activity` or `Fragment`.
 > public void push(Object data)
@@ -83,7 +83,7 @@ CachePot.getInstance().push(foodItems);
 List<KoreanFood> foodItems = CachePot.getInstance().pop(ArrayList.class);
 ```
 
-## 2. Signle Type, Multiple Data
+## 2. Single Type, Multiple Data
 
 How to pass Object(Model) Asynchronously when using ViewPager
 
