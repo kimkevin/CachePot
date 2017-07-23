@@ -124,7 +124,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 **If more complecated views, use TAG**
 
-> public void push(String tag, Object data)
+> public void push(String tag, Object data)  
 > public void push(String tag, long id, Object data)
 
 ```java
@@ -140,7 +140,7 @@ private class PagerAdapter extends FragmentStatePagerAdapter {
 }
 ```
 
-> public Object pop(String tag)
+> public Object pop(String tag)  
 > public Object pop(String tag, long id)
 
 ```java
