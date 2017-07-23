@@ -162,5 +162,5 @@ All contributions are welcome. Open a [Pull Requests](https://github.com/kimkevi
 the [Issues](https://github.com/kimkevin/CachePot/issues) section.
 
 # License
-MIT
+MIT  
 Copyright (c) 2016-present, “KimKevin” Yongjun Kim
