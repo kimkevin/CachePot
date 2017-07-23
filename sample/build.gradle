@@ -33,6 +33,6 @@ dependencies {
   compile "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
   testCompile "junit:junit:${JUNIT_VERSION}"
 
-  debugCompile project(path: ':library')
+  compile project(path: ':library')
 //  debugCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
 }
