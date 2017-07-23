@@ -1,16 +1,222 @@
 package com.github.kimkevin.cachepot;
 
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.MockitoAnnotations;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class CachePotTest {
+  private static final String TAG = "CachePotTest";
+
+  private CachePot cachePot;
+  private User user1;
+  private User user2;
+
+  @Before
+  public void setUp() throws Exception {
+    cachePot = CachePot.getInstance();
+
+    MockitoAnnotations.initMocks(this);
+
+    user1 = new User(0, "test1");
+    user2 = new User(1, "test2");
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    cachePot.clear();
+  }
+
+  @Test
+  public void whenPush_thenSizeIsOne() throws Exception {
+    cachePot.push(user1);
+
+    assertEquals(1, CachePot.getInstance().size());
+  }
+
+  @Test
+  public void whenPop_thenIdIsValid() throws Exception {
+    cachePot.push(user1);
+    User user = cachePot.pop(User.class);
+
+    assertEquals(user1.getId(), user.getId());
+  }
+
+  @Test
+  public void whenPushMultipleUser_thenLastUserIsValid() throws Exception {
+    cachePot.push(user1);
+    cachePot.push(user2);
+
+    User user = cachePot.pop(User.class);
+
+    assertEquals(user2.getId(), user.getId());
+  }
+
+  @Test
+  public void whenPushMultipleUser_thenUserIsOnlyOne() throws Exception {
+    cachePot.push(user1);
+    cachePot.push(user2);
+
+    int potSize = cachePot.size();
+
+    assertEquals(1, potSize);
+  }
+
+  @Test
+  public void whenPushWithId_thenPotSizeIsOne() throws Exception {
+    cachePot.push(user1.getId(), user1);
+
+    int potSize = cachePot.size();
+
+    assertEquals(1, potSize);
+  }
+
+  @Test
+  public void whenPopWithId_thenUserIsValid() throws Exception {
+    cachePot.push(user1.getId(), user1);
+
+    User user = cachePot.pop(user1.getId());
+
+    assertNotNull(user);
+    assertEquals(user1.getId(), user.getId());
+  }
+
+  @Test
+  public void whenPushMultipleUsersWithId_thenPotSizeIsTwo() throws Exception {
+    cachePot.push(user1.getId(), user1);
+    cachePot.push(user2.getId(), user2);
+
+    int potSize = cachePot.size();
+
+    assertEquals(2, potSize);
+  }
+
+  @Test
+  public void givenMultipleUsersWithId_whenPopFirstUser_thenUserIsValid() throws Exception {
+    cachePot.push(user1.getId(), user1);
+    cachePot.push(user2.getId(), user2);
+
+    User firstUser = cachePot.pop(user1.getId());
+
+    assertNotNull(firstUser);
+    assertEquals(user1.getId(), firstUser.getId());
+  }
+
+  @Test
+  public void givenMultipleUsersWithId_whenPopWithInvalidId_thenUserIsNull() throws Exception {
+    cachePot.push(user1.getId(), user1);
+    cachePot.push(user2.getId(), user2);
+
+    User firstUser = cachePot.pop(3);
+
+    assertNull(firstUser);
+  }
+
+  @Test
+  public void givenMultipleUsersWithId_whenClear_thenPotIsEmpty() throws Exception {
+    cachePot.push(user1.getId(), user1);
+    cachePot.push(user2.getId(), user2);
+
+    cachePot.clear();
+
+    assertEquals(0, cachePot.size());
+  }
+
+  @Test
+  public void whenPushUsersWithKey_thenPotSizeIsTwo() throws Exception {
+    cachePot.push("user1", user1);
+    cachePot.push("user2", user2);
+
+    assertEquals(2, cachePot.size());
+  }
+
+  @Test
+  public void givenPushUsersWithKey_whenPopLastUserWithValidKey_thenUserIsValid() throws Exception {
+    cachePot.push("user1", user1);
+    cachePot.push("user2", user2);
+
+    User lastUser = cachePot.pop("user2");
+
+    assertEquals(1, lastUser.getId());
+    assertEquals("test2", lastUser.getName());
+  }
+
+  @Test
+  public void givenPushUsersWithKey_whenPopLastUserWithInvalidKey_thenUserIsInvalid() throws Exception {
+    cachePot.push("user1", user1);
+    cachePot.push("user2", user2);
+
+    User user = cachePot.pop("user3");
+
+    assertNull(user);
+  }
+
+  @Test
+  public void whenPushUsersWithTagAndId_thenPotSizeIsTwo() throws Exception {
+    cachePot.push(TAG, user1.getId(), user1);
+    cachePot.push(TAG, user2.getId(), user2);
+
+    assertEquals(2, cachePot.size(TAG));
+  }
+
+  @Test
+  public void givenPushUsersWithKeyAndId_whenPopLastUserWithValidKey_thenUserIsValid() throws Exception {
+    cachePot.push(TAG, user1.getId(), user1);
+    cachePot.push(TAG, user2.getId(), user2);
+
+    User lastUser = cachePot.pop(TAG, user2.getId());
+
+    assertEquals(1, lastUser.getId());
+    assertEquals("test2", lastUser.getName());
+  }
+
+  @Test
+  public void givenPushUsersWithKeyAndId_whenPopLastUserWithInvalidKey_thenUserIsInvalid() throws Exception {
+    cachePot.push(TAG, user1.getId(), user1);
+    cachePot.push(TAG, user2.getId(), user2);
+
+    User user = cachePot.pop(TAG, 5);
+
+    assertNull(user);
+  }
+
+  @Test
+  public void givenPushUsersWithKeyAndId_whenClearWithTag_thenGroupPotIsEmpty() throws Exception {
+    cachePot.push(TAG, user1.getId(), user1);
+    cachePot.push(TAG, user2.getId(), user2);
+
+    cachePot.clear(TAG);
+
+    assertEquals(0, cachePot.size(TAG));
+  }
+
+  @Test
+  public void givenPushUsersWithKeyAndId_whenPopWithTagId_thenGroupPotIsEmpty() throws Exception {
+    cachePot.push(TAG, user1.getId(), user1);
+    cachePot.push(TAG, user2.getId(), user2);
+
+    cachePot.pop(TAG, user1.getId());
+    cachePot.pop(TAG, user2.getId());
+
+    assertEquals(0, cachePot.size(TAG));
+    assertEquals(0, cachePot.size());
+  }
+
+  @Test
+  public void givenPushUsersWithKeyAndId_whenClearWithTag_thenPotIsEmpty() throws Exception {
+    cachePot.push(TAG, user1.getId(), user1);
+    cachePot.push(TAG, user2.getId(), user2);
+
+    cachePot.clear(TAG);
+
+    assertEquals(0, cachePot.size());
+  }
+
   private class User {
     int id;
     String name;
@@ -19,173 +225,13 @@ public class CachePotTest {
       this.id = id;
       this.name = name;
     }
-  }
 
-  @Test
-  public void PushTest() throws Exception {
-    User user = mock(User.class);
+    public int getId() {
+      return id;
+    }
 
-    CachePot.getInstance().push(user);
-
-    assertEquals(1, CachePot.getInstance().size());
-    assertThat(CachePot.getInstance().size(), is(greaterThan(0)));
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void MultiplePushTest() throws Exception {
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push(user1);
-    CachePot.getInstance().push(user2);
-    CachePot.getInstance().push(user3);
-
-    assertThat(1, is(CachePot.getInstance().size()));
-    assertThat(user3.id, is(user3.id));
-    assertThat(user3.name, is(user3.name));
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void PopTest() throws Exception {
-    User user = new User(0, "Mike");
-    CachePot.getInstance().push(user);
-
-    User cachedUser = CachePot.getInstance().pop(User.class);
-
-    assertEquals(CachePot.getInstance().size(), 0);
-    assertThat(user.id, is(cachedUser.id));
-    assertThat(user.name, is(cachedUser.name));
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void PushIdTest() throws Exception {
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push(user1.id, user1);
-    CachePot.getInstance().push(user2.id, user2);
-    CachePot.getInstance().push(user3.id, user3);
-
-    assertEquals(3, CachePot.getInstance().size());
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void PopPositionTest() throws Exception {
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push(2, user1);
-    CachePot.getInstance().push(3, user2);
-    CachePot.getInstance().push(4, user3);
-
-    assertEquals(3, CachePot.getInstance().size());
-
-    User cachedUser2 = CachePot.getInstance().pop(3);
-    assertThat(user2.name, is(cachedUser2.name));
-    assertThat(user2.id, is(cachedUser2.id));
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void PopIdTest() throws Exception {
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push(user1.id, user1);
-    CachePot.getInstance().push(user2.id, user2);
-    CachePot.getInstance().push(user3.id, user3);
-
-    assertEquals(3, CachePot.getInstance().size());
-
-    User cachedUser2 = CachePot.getInstance().pop(user2.id);
-    assertThat(user2.name, is(cachedUser2.name));
-    assertThat(user2.id, is(cachedUser2.id));
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void PushTagTest() throws Exception {
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push("Adapter", 0, user1);
-    CachePot.getInstance().push("Adapter", 1, user2);
-    CachePot.getInstance().push("Adapter", 2, user3);
-
-    assertEquals(1, CachePot.getInstance().size());
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void PopTagTest() throws Exception {
-    final String TAG = "Adapter";
-
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push(TAG, 2, user1);
-    CachePot.getInstance().push(TAG, 3, user2);
-    CachePot.getInstance().push(TAG, 4, user3);
-
-    assertEquals(1, CachePot.getInstance().size());
-    assertEquals(3, CachePot.getInstance().size(TAG));
-
-    User cachedUser2 = CachePot.getInstance().pop(TAG, 3);
-    assertThat(user2.name, is(cachedUser2.name));
-    assertThat(user2.id, is(cachedUser2.id));
-
-    CachePot.getInstance().clear();
-  }
-
-  @Test
-  public void ClearTest() throws Exception {
-    User user = mock(User.class);
-
-    CachePot.getInstance().push(user);
-
-    assertThat(CachePot.getInstance().size(), is(greaterThan(0)));
-
-    CachePot.getInstance().clear();
-
-    assertThat(CachePot.getInstance().size(), is(equalTo(0)));
-  }
-
-  @Test
-  public void ClearTagTest() throws Exception {
-    final String TAG = "Adapter";
-
-    User user1 = new User(0, "Mike");
-    User user2 = new User(1, "Kevin");
-    User user3 = new User(2, "Jassi");
-
-    CachePot.getInstance().push(TAG, 2, user1);
-    CachePot.getInstance().push(TAG, 3, user2);
-    CachePot.getInstance().push(TAG, 4, user3);
-
-    assertThat(CachePot.getInstance().size(TAG), is(greaterThan(0)));
-    assertThat(CachePot.getInstance().size(TAG), is(equalTo(3)));
-
-    CachePot.getInstance().clear(TAG);
-
-    assertThat(CachePot.getInstance().size(TAG), is(equalTo(0)));
-
-    CachePot.getInstance().clear();
+    public String getName() {
+      return name;
+    }
   }
 }
