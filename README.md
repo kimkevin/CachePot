@@ -1,4 +1,6 @@
-# CachePot - Android Simple Data Cache
+CachePot - Android Simple Data Cache
+=====
+
 
 [![Build Status](https://travis-ci.org/kimkevin/CachePot.svg?branch=master)](https://travis-ci.org/kimkevin/CachePot)
 [![Download](https://api.bintray.com/packages/kimkevin/maven/com.github.kimkevin%3Acachepot/images/download.svg) ](https://bintray.com/kimkevin/maven/com.github.kimkevin%3Acachepot/_latestVersion)
@@ -18,7 +20,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.github.kimkevin:cachepot:1.1.0'
+  compile 'com.github.kimkevin:cachepot:1.2.0’
 }
 ```
 
@@ -28,7 +30,7 @@ Maven:
 <dependency>
   <groupId>com.github.kimkevin</groupId>
   <artifactId>cachepot</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
 </dependency>
 ```
 
@@ -122,6 +124,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 **If more complecated views, use TAG**
 
+> public void push(String tag, Object data)
 > public void push(String tag, long id, Object data)
 
 ```java
@@ -137,6 +140,7 @@ private class PagerAdapter extends FragmentStatePagerAdapter {
 }
 ```
 
+> public Object pop(String tag)
 > public Object pop(String tag, long id)
 
 ```java
@@ -153,12 +157,10 @@ public void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-# Developed By
-* Kevin Yongjun Kim - imkimkevin@gmail.com
-
 # Contributing
 All contributions are welcome. Open a [Pull Requests](https://github.com/kimkevin/CachePot/pulls) or refer to
 the [Issues](https://github.com/kimkevin/CachePot/issues) section.
 
 # License
 MIT
+Copyright (c) 2016-present, “KimKevin” Yongjun Kim
