@@ -17,14 +17,14 @@ public class CachePot {
     return instance;
   }
 
-  private Map<Object, Object> pot;
+  private final Map<Object, Object> pot;
 
   public CachePot() {
     pot = new HashMap<>();
   }
 
   public void push(Object data) {
-    pot.put(data.getClass(), data);
+    pushObject(data.getClass(), data);
   }
 
   public <T> T pop(Class classType) {
@@ -47,73 +47,58 @@ public class CachePot {
     return popObject(key);
   }
 
-  public void push(String TAG, int id, Object data) {
-    Map<Integer, Object> groupPot;
+  public void push(String tag, int id, Object data) {
+    Object o = pot.get(tag);
 
-    if (pot.containsKey(TAG) && pot.get(TAG) instanceof Map) {
-      groupPot = (Map) pot.get(TAG);
-    } else {
-      groupPot = new HashMap<>();
+    if (!(o instanceof Map)) {
+      o = new HashMap<>();
+      pushObject(tag, o);
     }
+    Map<Integer, Object> groupPot = (Map) o;
 
     groupPot.put(id, data);
-    pushObject(TAG, groupPot);
   }
 
-  public <T> T pop(String TAG, int id) {
-    T value = null;
-    Map groupPot;
-    if (pot.get(TAG) instanceof Map) {
-      groupPot = (Map) pot.get(TAG);
-
-      value = (T) groupPot.get(id);
-      if (value == null) {
-        return null;
-      }
-
-      groupPot.remove(id);
-
-      if (groupPot.isEmpty()) {
-        pop(TAG);
-      }
+  public <T> T pop(String tag, int id) {
+    Object o = pot.get(tag);
+    if (!(o instanceof Map)) {
+      return null;
     }
 
-    return value;
+    Map groupPot = (Map) o;
+
+    try {
+      return (T) groupPot.remove(id);
+    } finally {
+      if (groupPot.isEmpty()) {
+        pop(tag);
+      }
+    }
   }
 
   public int size() {
-    try {
-      return pot.size();
-    } catch (NullPointerException exception) {
-      return 0;
-    }
+    return pot.size();
   }
 
-  public int size(String TAG) {
-    try {
-      if (pot.get(TAG) != null && pot.get(TAG) instanceof Map) {
-        return ((Map) pot.get(TAG)).size();
-      }
-    } catch (ClassCastException | NullPointerException exception) {
+  public int size(String tag) {
+    Object o = pot.get(tag);
+    if (!(o instanceof Map)) {
       return 0;
     }
-    return 0;
+    return ((Map) o).size();
   }
 
   public void clear() {
     pot.clear();
   }
 
-  public void clear(String TAG) {
-    if (pot.get(TAG) != null && pot.get(TAG) instanceof Map) {
-      Map groupPot = (Map) pot.get(TAG);
-
-      groupPot.clear();
-
-      if (groupPot.isEmpty()) {
-        pop(TAG);
-      }
+  public void clear(String tag) {
+    Object o = pot.get(tag);
+    if (!(o instanceof Map)) {
+      return;
     }
+    ((Map) o).clear();
+    pop(tag);
   }
 
   private void pushObject(Object key, Object value) {
@@ -121,14 +106,7 @@ public class CachePot {
   }
 
   private <T> T popObject(Object key) {
-    T value = (T) pot.get(key);
-
-    if (value == null) {
-      return null;
-    }
-
-    pot.remove(key);
-    return value;
+    return (T) pot.remove(key);
   }
 
   @Override
