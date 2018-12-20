@@ -17,11 +17,7 @@ public class CachePot {
     return instance;
   }
 
-  private final Map<Object, Object> pot;
-
-  public CachePot() {
-    pot = new HashMap<>();
-  }
+  private final Map<Object, Object> pot = new HashMap<>();
 
   public void push(Object data) {
     pushObject(data.getClass(), data);
