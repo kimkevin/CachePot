@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
-  buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
     applicationId "com.github.kimkevin.cachepot.sample"
@@ -25,14 +24,14 @@ android {
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
-  compile "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
-  testCompile "junit:junit:${JUNIT_VERSION}"
+  implementation "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
+  testImplementation "junit:junit:${JUNIT_VERSION}"
 
-  compile project(path: ':library')
+  implementation project(path: ':library')
 //  debugCompile "com.github.kimkevin:cachepot:${RELEASE_VERSION_NAME}"
 }
