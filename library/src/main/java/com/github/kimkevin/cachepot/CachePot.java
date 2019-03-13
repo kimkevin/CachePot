@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CachePot {
-  private static CachePot instance;
+  private static volatile CachePot instance;
 
   public static CachePot getInstance() {
     if (instance == null) {
